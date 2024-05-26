@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class EmployeeCard extends StatelessWidget {
   Employee employee;
-  EmployeeCard({required this.employee, super.key});
+  final VoidCallback onDeletePressed;
+  EmployeeCard({
+    super.key,
+    required this.employee,
+    required this.onDeletePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,10 @@ class EmployeeCard extends StatelessWidget {
               Text(employee.phone),
             ],
           ),
-          trailing: const Icon(Icons.delete),
+          trailing: IconButton(
+            onPressed: onDeletePressed,
+            icon: const Icon(Icons.delete),
+          ),
         ),
       ),
     );

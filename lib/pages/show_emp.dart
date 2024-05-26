@@ -3,6 +3,8 @@ import 'package:add_employee/pages/add_emp.dart';
 import 'package:add_employee/widgets/employee_card.dart';
 import 'package:flutter/material.dart';
 
+import '../sql.dart';
+
 // ignore: must_be_immutable
 class ShowEmp extends StatefulWidget {
   List<Employee> employeeList;
@@ -49,6 +51,14 @@ class _ShowEmpState extends State<ShowEmp> {
     for (var emp in widget.employeeList) {
       employeeCards.add(EmployeeCard(
         employee: emp,
+        onDeletePressed: () {
+          setState(() {
+            widget.employeeList.remove(emp);
+          });
+          EmployeeDb().deleteData(
+            'delete from employee where id = ${emp.id}',
+          );
+        },
       ));
     }
     return employeeCards;
