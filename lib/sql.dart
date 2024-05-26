@@ -10,7 +10,7 @@ class EmployeeDb {
   void createTables() async {
     try {
       await db!.execute('''
-        create table 'employee' (
+        create table if not exists 'employee' (
         id integer primary key autoincrement,
         name String,
         email String,
@@ -37,6 +37,7 @@ class EmployeeDb {
           },
         );
       }
+      createTables();
     } catch (e) {
       print('Errror in created database :$e');
     }
