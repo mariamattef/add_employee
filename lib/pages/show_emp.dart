@@ -28,6 +28,8 @@ class _ShowEmpState extends State<ShowEmp> {
           child: const Icon(Icons.add),
         ),
         appBar: AppBar(
+          backgroundColor: Colors.blueAccent,
+          foregroundColor: Colors.white,
           title: const Text('AppBar'),
         ),
         body: widget.employeeList.isEmpty
